@@ -1,24 +1,10 @@
-<?php 
-session_start();
+<?php
 require('config.php');
+require('autoload.php');
 
-require('classes/Messages.php');
-require('classes/Bootstrap.php');
-require('classes/Controller.php');
-require('classes/Model.php');
+$router = new Router($_GET);
 
-require('controllers/home.php');
-require('controllers/users.php');
-require('controllers/shares.php');
-
-require('models/home.php');
-require('models/share.php');
-require('models/user.php');
-
-
-$bootstrap = new Bootstrap($_GET); 
-
-$controller = $bootstrap->createController();
+$controller = $router->createController();
 
 if ($controller){
     $controller->executeAction();

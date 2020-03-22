@@ -6,7 +6,6 @@ class Messages{
         } else {
             $_SESSION['successMsg'] = $text;
         }
-
     }
 
     public static  function display(){

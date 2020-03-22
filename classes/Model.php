@@ -2,7 +2,6 @@
 abstract class Model{
     protected $dbh;
     protected $stmt;
-    
 
     public function __construct(){
         $this->dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
@@ -12,7 +11,6 @@ abstract class Model{
         $this->stmt = $this->dbh->prepare($query);
     }
 
-    
     public function bind($param, $value, $type = null){
         if(is_null($type)){
             switch(true){
@@ -27,8 +25,6 @@ abstract class Model{
               break;
               default :
               $type = PDO::PARAM_STR;
-            
-        
             }
         }
         $this->stmt->bindValue($param, $value, $type);
@@ -45,10 +41,10 @@ abstract class Model{
     
     public function lastInsertId(){
       return $this->dbh->lastInsertId();
-  }
+    }
 
-  public function single(){
-    $this->execute(); 
+    public function single(){
+    $this->execute();
     return $this->stmt->fetch(PDO::FETCH_ASSOC);
-  }
+    }
 }

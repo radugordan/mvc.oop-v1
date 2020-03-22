@@ -1,16 +1,19 @@
 <?php 
-class Shares extends Controller{
-    protected function Index(){ 
-        $viewmodel = new ShareModel();
-        $this->returnView($viewmodel->Index(), true);
+class Shares extends Controller {
+    public function __construct($action, $request){
+        parent::__construct( $action, $request);
+        $this->viewmodel = new ShareModel();
+    }
+
+    protected function Index(){
+        $this->returnView( $this->viewmodel->Index(), true);
     }
 
     protected function add(){ 
         if (!isset($_SESSION['isLogged'])){
             header("Location:".ROOT_URL);
         }
-        $viewmodel = new ShareModel();
-        $this->returnView($viewmodel->add(), true);
+        $this->returnView( $this->viewmodel->add(), true);
     }
 }
 ?>

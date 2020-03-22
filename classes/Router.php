@@ -1,5 +1,6 @@
-<?php 
-class Bootstrap{
+<?php
+
+class Router{
     private $controller;
     private $action;
     private $request;
@@ -9,14 +10,12 @@ class Bootstrap{
       
         if ($this->request['controller'] == ""){
             $this->controller = 'Home';
-             
         } else {
             $this->controller = $this->request['controller'];
         }
 
         if ($this->request['action'] == '') {
             $this->action = 'Index';
-             
         } else {
             $this->action = $this->request['action'];
         }
@@ -25,15 +24,10 @@ class Bootstrap{
     public function createController(){
       
         //check class
-        
         if (class_exists($this->controller)) {
-            $parents = class_parents($this->controller); 
-            
-            // check extend
-            
+            $parents = class_parents($this->controller);
+            // check extension
             if (in_array("Controller", $parents)){
-                
-       
                 if (method_exists($this->controller, $this->action)){
                     return new $this->controller($this->action, $this->request);
                 }else{
@@ -45,9 +39,9 @@ class Bootstrap{
                 echo "<h1>Base controller not found</h1>";
                 return;
             }
-        
+
         } else {
-            // controller class doesn;t exist
+            // controller class doesn't exist
                 echo "<h1>Controller class does not exist</h1>";
                 return;
         }

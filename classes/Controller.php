@@ -1,5 +1,5 @@
 <?php 
-abstract class Controller{
+class Controller{
     protected $request;
     protected $action;
 

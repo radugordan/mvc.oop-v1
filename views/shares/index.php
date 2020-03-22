@@ -11,7 +11,7 @@
             <h5 class="card-title"> <?php echo $item['title']; ?></h5>
             <p class="card"
             <p class="card-text"> <?php echo $item['body']; ?></p>
-            <a href="<?php echo $item['link']; ?>" class="btn btn-primary">Website</a>
+            <a href="http://<?php echo $item['link']; ?>" class="btn btn-primary">Website</a>
         </div>
         </div>
     <?php endforeach; ?>

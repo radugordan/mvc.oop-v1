@@ -1,5 +1,9 @@
 <?php 
 class UserModel extends Model{
+
+    public function Index(){
+        return;
+    }
     public function register(){
     // sanitize string 
     $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -28,8 +32,7 @@ class UserModel extends Model{
     $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     $passsword = md5($post['password']);
    
-        if ($post['submit']){  
-        
+        if ($post['submit']){
             // insert to mysql
             $this->query('SELECT * FROM users WHERE email = :email AND password = :password');
             $this->bind(':email' , $post['email']);
@@ -48,11 +51,9 @@ class UserModel extends Model{
            }else{
             Messages::setMessage("Please fill in all the fields", "error");
             return;
+            }
         }
-          
-        }
-}
-
+    }
 
     public function logout(){
         unset($_SESSION['isLogged']);
