@@ -29,7 +29,8 @@ class Router{
             // check extension
             if (in_array("Controller", $parents)){
                 if (method_exists($this->controller, $this->action)){
-                    return new $this->controller($this->action, $this->request);
+                    $viewmodel = ModelFactory::makeModel($this->controller);
+                    return new $this->controller($viewmodel, $this->action, $this->request);
                 }else{
                     // method deos not exist
                     echo "<h1>Method does not exist</h1>";

@@ -2,10 +2,12 @@
 abstract class Controller{
     protected $request;
     protected $action;
+    protected $viewmodel;
 
-    public function __construct($action, $request){ 
+    public function __construct($viewmodel, $action, $request){
         $this->action = $action;
         $this->request = $request;
+        $this->viewmodel = $viewmodel;
     }
 
     public function executeAction(){

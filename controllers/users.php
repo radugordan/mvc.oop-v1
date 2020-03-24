@@ -1,11 +1,5 @@
 <?php 
 class Users extends Controller{
-
-    public function __construct($action, $request){
-        parent::__construct( $action, $request);
-        $this->viewmodel = new UserModel();
-    }
-
     protected function register(){
         $this->returnView($this->viewmodel->register(), true);
     }
@@ -17,5 +11,4 @@ class Users extends Controller{
     protected function logout(){
         $this->returnView($this->viewmodel->logout(), true);
     }
-  
 }

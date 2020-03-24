@@ -1,10 +1,5 @@
 <?php 
 class Shares extends Controller {
-    public function __construct($action, $request){
-        parent::__construct( $action, $request);
-        $this->viewmodel = new ShareModel();
-    }
-
     protected function Index(){
         $this->returnView( $this->viewmodel->Index(), true);
     }
